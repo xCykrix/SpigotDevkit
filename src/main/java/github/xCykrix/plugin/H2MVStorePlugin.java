@@ -3,6 +3,7 @@ package github.xCykrix.plugin;
 import github.xCykrix.DevkitPlugin;
 import github.xCykrix.extendable.DevkitFullState;
 import java.io.File;
+import java.util.Date;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.h2.mvstore.MVStore;
 import org.h2.mvstore.MVStoreException;
@@ -28,12 +29,14 @@ public class H2MVStorePlugin extends DevkitFullState {
           .open();
     } catch (MVStoreException exception) {
       File file = new File(this.plugin.getDataFolder() + "/" + "h2store");
+      String backup = "h2store-" + new Date().getTime() + ".backup";
       if (file.exists()) {
-        file.renameTo(new File(this.plugin.getDataFolder() + "/" + "h2store.legacy"));
+        file.renameTo(new File(this.plugin.getDataFolder() + "/" + backup));
       }
-      this.plugin.getLogger().warning("Failed to load h2store. Database corrupted or unsupported version.");
-      this.plugin.getLogger().warning("Please report this to Plugin Author. Database has been saved as 'h2store.legacy' and regenerated.");
+      this.plugin.getLogger().warning("Failed to load h2store. Database corrupted or v1 database format was provided.");
+      this.plugin.getLogger().warning("Please report this to Plugin Author. Database has been saved as '" + backup + "' and regenerated.");
       this.plugin.getLogger().warning(ExceptionUtils.getMessage(exception));
+      this.plugin.getLogger().warning("Migration from v1 to v2: https://github.com/manticore-projects/H2MigrationTool");
       this.store = null;
     }
   }
