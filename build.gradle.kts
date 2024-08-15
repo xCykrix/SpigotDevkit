@@ -9,7 +9,7 @@ plugins {
 
 // Variables
 group = "github.xCykrix"
-version = "1.0.0"
+version = "1.0.2"
 
 // Repositories
 repositories {
@@ -48,7 +48,7 @@ dependencies {
 tasks.named<ShadowJar>("shadowJar") {
     archiveClassifier = null
     isEnableRelocation = true
-    relocationPrefix = "github.xCykrix.shade"
+    relocationPrefix = "dist.xCykrix.shade"
 }
 
 // Publications
