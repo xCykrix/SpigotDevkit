@@ -3,10 +3,10 @@ package github.xCykrix.plugin;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import github.xCykrix.DevkitPlugin;
-import github.xCykrix.extendable.DevkitCommonState;
+import github.xCykrix.extendable.DevkitFullState;
 
 @SuppressWarnings({"unused", "Called by child applications."})
-public class ProtocolLibPlugin extends DevkitCommonState {
+public class ProtocolLibPlugin extends DevkitFullState {
   private ProtocolManager protocolManager;
 
   public ProtocolLibPlugin(DevkitPlugin plugin) {

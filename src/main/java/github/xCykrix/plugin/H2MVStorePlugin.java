@@ -1,14 +1,14 @@
 package github.xCykrix.plugin;
 
 import github.xCykrix.DevkitPlugin;
-import github.xCykrix.extendable.DevkitCommonState;
+import github.xCykrix.extendable.DevkitFullState;
 import java.io.File;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.h2.mvstore.MVStore;
 import org.h2.mvstore.MVStoreException;
 
 @SuppressWarnings({"unused", "Called by child applications."})
-public class H2MVStorePlugin extends DevkitCommonState {
+public class H2MVStorePlugin extends DevkitFullState {
   private MVStore store;
 
   public H2MVStorePlugin(DevkitPlugin plugin) {
@@ -33,7 +33,7 @@ public class H2MVStorePlugin extends DevkitCommonState {
       }
       this.plugin.getLogger().warning("Failed to load h2store. Database corrupted or unsupported version.");
       this.plugin.getLogger().warning("Please report this to Plugin Author. Database has been saved as 'h2store.legacy' and regenerated.");
-      this.plugin.getLogger().severe(ExceptionUtils.getStackTrace(exception));
+      this.plugin.getLogger().warning(ExceptionUtils.getMessage(exception));
       this.store = null;
     }
   }

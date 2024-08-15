@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SpigotDevkit.main.iml" filepath="$PROJECT_DIR$/.idea/modules/SpigotDevkit.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SpigotDevkit.test.iml" filepath="$PROJECT_DIR$/.idea/modules/SpigotDevkit.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/github.xCykrix.SpigotDevkit.main.iml" filepath="$PROJECT_DIR$/.idea/modules/github.xCykrix.SpigotDevkit.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/github.xCykrix.SpigotDevkit.test.iml" filepath="$PROJECT_DIR$/.idea/modules/github.xCykrix.SpigotDevkit.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spigotdevkit.main.iml" filepath="$PROJECT_DIR$/.idea/modules/spigotdevkit.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spigotdevkit.test.iml" filepath="$PROJECT_DIR$/.idea/modules/spigotdevkit.test.iml" />
     </modules>
   </component>
 </project>

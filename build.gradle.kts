@@ -3,12 +3,15 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 plugins {
     id("java")
     id("java-library")
-    id("io.github.goooler.shadow") version "8.1.8"
+    id("maven-publish")
+    id("com.gradleup.shadow") version "8.3.0"
 }
 
+// Variables
 group = "github.xCykrix"
-version = "1.0-0-SNAPSHOT"
+version = "1.0.0"
 
+// Repositories
 repositories {
     mavenCentral()
 
@@ -23,6 +26,7 @@ repositories {
     maven("https://repo.dmulloy2.net/repository/public/")
 }
 
+// Dependencies
 dependencies {
     // Spigot-based API
     compileOnly("org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT")
@@ -37,13 +41,33 @@ dependencies {
     implementation("com.h2database:h2-mvstore:2.3.232")
 
     // APIs
-    api("com.comphenix.protocol:ProtocolLib:5.1.0");
+    compileOnly("com.comphenix.protocol:ProtocolLib:5.1.0");
 }
 
-tasks.withType<ShadowJar> {
-    relocate("dev.dejvokep", "github.xCykrix.shade.dev.dejvokep")
-    relocate("dev.jorel", "github.xCykrix.shade.dev.jorel")
-    relocate("org.h2.mvstore", "github.xCykrix.shade.org.h2.mvstore")
+// Shadow Task
+tasks.named<ShadowJar>("shadowJar") {
+    archiveClassifier = null
+    isEnableRelocation = true
+    relocationPrefix = "github.xCykrix.shade"
+}
+
+// Publications
+publishing {
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/xCykrix/SpigotDevkit")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
+        }
+    }
 }
 
 // Target Java Build (Java 17 - Minecraft 1.17.x)

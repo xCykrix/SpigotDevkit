@@ -1,11 +1,11 @@
 package github.xCykrix.plugin;
 
 import github.xCykrix.DevkitPlugin;
-import github.xCykrix.extendable.DevkitCommonState;
+import github.xCykrix.extendable.DevkitFullState;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 
 @SuppressWarnings({"unused", "Called by child applications."})
-public class AdventurePlugin extends DevkitCommonState {
+public class AdventurePlugin extends DevkitFullState {
   private BukkitAudiences audiences;
 
   public AdventurePlugin(DevkitPlugin plugin) {

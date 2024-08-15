@@ -1,2 +1,2 @@
-rootProject.name = "SpigotDevkit"
+rootProject.name = "spigotdevkit"
 

@@ -1,12 +1,12 @@
 package github.xCykrix;
 
-import github.xCykrix.extendable.DevkitCommonState;
+import github.xCykrix.extendable.DevkitFullState;
 import java.lang.reflect.InvocationTargetException;
 
 public class PluginReference {
-  private DevkitCommonState state;
+  private DevkitFullState state;
 
-  public <T extends DevkitCommonState> void create(Class<T> clazz, DevkitPlugin plugin) {
+  public <T extends DevkitFullState> void create(Class<T> clazz, DevkitPlugin plugin) {
     if (this.state == null) {
       try {
         this.state = clazz.getDeclaredConstructor(DevkitPlugin.class).newInstance(plugin);
@@ -18,7 +18,7 @@ public class PluginReference {
   }
 
   @SuppressWarnings("unchecked")
-  public <T extends DevkitCommonState> T get() {
+  public <T extends DevkitFullState> T get() {
     if (this.state == null) throw new IllegalStateException("Unable to access API. Has it been initialized?");
     return (T) this.state;
   }

@@ -8,7 +8,7 @@ import dev.dejvokep.boostedyaml.settings.loader.LoaderSettings;
 import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings;
 import dev.dejvokep.boostedyaml.spigot.SpigotSerializer;
 import github.xCykrix.DevkitPlugin;
-import github.xCykrix.extendable.DevkitCommonState;
+import github.xCykrix.extendable.DevkitFullState;
 import github.xCykrix.helper.LanguageFile;
 import github.xCykrix.records.Resource;
 import java.io.File;
@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 @SuppressWarnings({"unused", "Called by child applications."})
-public class ConfigurationPlugin extends DevkitCommonState {
+public class ConfigurationPlugin extends DevkitFullState {
   private final HashMap<String, YamlDocument> yamlDocumentHashMap = new HashMap<>();
   private LanguageFile languageFile;
 

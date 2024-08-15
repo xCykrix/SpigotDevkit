@@ -3,7 +3,8 @@ package github.xCykrix.helper;
 
 import dev.dejvokep.boostedyaml.YamlDocument;
 import github.xCykrix.DevkitPlugin;
-import github.xCykrix.extendable.DevkitCommonState;
+import github.xCykrix.extendable.DevkitFullState;
+import github.xCykrix.extendable.DevkitSimpleState;
 import github.xCykrix.records.PlaceholderPair;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -15,7 +16,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 
-public class LanguageFile extends DevkitCommonState {
+public class LanguageFile extends DevkitSimpleState {
   private final YamlDocument base;
 
   private final Component prefix;
@@ -31,16 +32,6 @@ public class LanguageFile extends DevkitCommonState {
     super(plugin);
     this.base = base;
     this.prefix = getBaseComponentFromID("chat-prefix");
-  }
-
-  @Override
-  public void initialize() {
-
-  }
-
-  @Override
-  public void shutdown() {
-
   }
 
   public Component getComponentFromID(String id, boolean prefix, PlaceholderPair... pairs) {
