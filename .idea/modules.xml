@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SpigotDevkit.main.iml" filepath="$PROJECT_DIR$/.idea/modules/SpigotDevkit.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SpigotDevkit.test.iml" filepath="$PROJECT_DIR$/.idea/modules/SpigotDevkit.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github.xCykrix.SpigotDevkit.main.iml" filepath="$PROJECT_DIR$/.idea/modules/github.xCykrix.SpigotDevkit.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github.xCykrix.SpigotDevkit.test.iml" filepath="$PROJECT_DIR$/.idea/modules/github.xCykrix.SpigotDevkit.test.iml" />
     </modules>
   </component>
 </project>

@@ -1,7 +1,9 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
-    id("com.gradleup.shadow") version "8.3.0"
     id("java")
     id("java-library")
+    id("io.github.goooler.shadow") version "8.1.8"
 }
 
 group = "github.xCykrix"
@@ -11,24 +13,14 @@ repositories {
     mavenCentral()
 
     // Core Repositories
-    maven {
-        url = uri("https://jitpack.io/")
-    }
-    maven {
-        url = uri("https://oss.sonatype.org/content/groups/public/")
-    }
+    maven("https://jitpack.io/")
+    maven("https://oss.sonatype.org/content/groups/public/")
 
     // Spigot Repository
-    maven {
-        url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-    }
+    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
 
     // API Repositories
-    maven {
-        name = "dmulloy2"
-        description = "ProtocolLib"
-        url = uri("https://repo.dmulloy2.net/repository/public/")
-    }
+    maven("https://repo.dmulloy2.net/repository/public/")
 }
 
 dependencies {
@@ -41,10 +33,17 @@ dependencies {
     implementation("net.kyori:adventure-platform-bukkit:4.3.4")
     implementation("net.kyori:adventure-text-minimessage:4.17.0")
     implementation("dev.dejvokep:boosted-yaml-spigot:1.4")
+    implementation("dev.jorel:commandapi-bukkit-shade:9.5.2")
     implementation("com.h2database:h2-mvstore:2.3.232")
 
     // APIs
     api("com.comphenix.protocol:ProtocolLib:5.1.0");
+}
+
+tasks.withType<ShadowJar> {
+    relocate("dev.dejvokep", "github.xCykrix.shade.dev.dejvokep")
+    relocate("dev.jorel", "github.xCykrix.shade.dev.jorel")
+    relocate("org.h2.mvstore", "github.xCykrix.shade.org.h2.mvstore")
 }
 
 // Target Java Build (Java 17 - Minecraft 1.17.x)

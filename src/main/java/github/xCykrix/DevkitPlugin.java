@@ -1,5 +1,7 @@
 package github.xCykrix;
 
+import dev.jorel.commandapi.CommandAPI;
+import dev.jorel.commandapi.CommandAPIBukkitConfig;
 import github.xCykrix.extendable.DevkitCommonState;
 import github.xCykrix.implementable.Initialize;
 import github.xCykrix.implementable.Shutdown;
@@ -12,10 +14,16 @@ public abstract class DevkitPlugin extends JavaPlugin implements Initialize, Shu
 
   // --- PLUGIN LOGIC ---
   @Override
+  public void onLoad() {
+    CommandAPI.onLoad(new CommandAPIBukkitConfig(this).verboseOutput(true).verboseOutput(true).usePluginNamespace());
+    this.pre();
+  }
+
+  @Override
   public void onEnable() {
     //noinspection ResultOfMethodCallIgnored
     this.getDataFolder().mkdirs();
-    this.pre();
+    CommandAPI.onEnable();
     this.registered.forEach(Initialize::initialize);
     this.initialize();
   }
@@ -24,6 +32,7 @@ public abstract class DevkitPlugin extends JavaPlugin implements Initialize, Shu
   public void onDisable() {
     this.shutdown();
     this.registered.forEach(Shutdown::shutdown);
+    CommandAPI.onDisable();
     this.registered.clear();
   }
 
