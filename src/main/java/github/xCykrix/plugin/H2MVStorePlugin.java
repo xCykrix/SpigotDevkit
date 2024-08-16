@@ -28,25 +28,15 @@ public class H2MVStorePlugin extends DevkitFullState {
           .fileName(this.plugin.getDataFolder() + "/" + "h2store")
           .open();
     } catch (MVStoreException exception) {
-      // Move Database to Migration Backup
       File file = new File(this.plugin.getDataFolder() + "/" + "h2store");
-      String name = "h2store.restore." + (new Date()).getTime();
+      String backup = "h2store-" + new Date().getTime() + ".backup";
       if (file.exists()) {
-        file.renameTo(new File(this.plugin.getDataFolder() + "/" + name));
+        file.renameTo(new File(this.plugin.getDataFolder() + "/" + backup));
       }
-
-      // Attempt to Migrate
-      if (ExceptionUtils.getMessage(exception).contains("write format")) {
-        this.plugin.getLogger().warning("Attempting to run migrations on h2store from v1 to v3 database format. This is a one time operation.");
-
-        return;
-      }
-
-
-      this.plugin.getLogger().warning("Failed to load h2store. Database corrupted or failed to migrate.");
-      this.plugin.getLogger().warning("Please report this to Plugin Author. Database has been saved as 'h2store.legacy' and initialized.");
-      this.plugin.getLogger().warning("This message indicates that your h2store flat file database is damaged and may require manual repairs.");
-      this.plugin.getLogger().warning("Error Message: " + ExceptionUtils.getMessage(exception));
+      this.plugin.getLogger().warning("Failed to load h2store. Database corrupted or v1 database format was provided.");
+      this.plugin.getLogger().warning("Please report this to Plugin Author. Database has been saved as '" + backup + "' and regenerated.");
+      this.plugin.getLogger().warning(ExceptionUtils.getMessage(exception));
+      this.plugin.getLogger().warning("Migration from v1 to v2: https://github.com/manticore-projects/H2MigrationTool");
       this.store = null;
     }
   }

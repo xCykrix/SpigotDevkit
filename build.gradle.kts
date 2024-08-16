@@ -9,7 +9,7 @@ plugins {
 
 // Variables
 group = "github.xCykrix"
-version = "1.0.0"
+version = "1.0.3"
 
 // Repositories
 repositories {
@@ -48,7 +48,7 @@ dependencies {
 tasks.named<ShadowJar>("shadowJar") {
     archiveClassifier = null
     isEnableRelocation = true
-    relocationPrefix = "github.xCykrix.shade"
+    relocationPrefix = "dist.xCykrix.shade"
 }
 
 // Publications
@@ -70,8 +70,8 @@ publishing {
     }
 }
 
-// Target Java Build (Java 17 - Minecraft 1.17.x)
-val targetJavaVersion = 17
+// Target Java Build (Java 16 - Minecraft 1.17.x)
+val targetJavaVersion = 16
 java {
     val javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
