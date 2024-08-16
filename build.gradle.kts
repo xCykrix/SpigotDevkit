@@ -9,7 +9,7 @@ plugins {
 
 // Variables
 group = "github.xCykrix"
-version = "1.0.3"
+version = "1.0.4"
 
 // Repositories
 repositories {
