@@ -9,7 +9,7 @@ plugins {
 
 // Variables
 group = "github.xCykrix"
-version = "1.0.2"
+version = "1.0.3"
 
 // Repositories
 repositories {
@@ -70,8 +70,8 @@ publishing {
     }
 }
 
-// Target Java Build (Java 17 - Minecraft 1.17.x)
-val targetJavaVersion = 17
+// Target Java Build (Java 16 - Minecraft 1.17.x)
+val targetJavaVersion = 16
 java {
     val javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
