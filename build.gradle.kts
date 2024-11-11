@@ -4,12 +4,12 @@ plugins {
     id("java")
     id("java-library")
     id("maven-publish")
-    id("com.gradleup.shadow") version "8.3.0"
+    id("com.gradleup.shadow") version "8.3.5"
 }
 
 // Variables
 group = "github.xCykrix"
-version = "1.0.4"
+version = "1.0.5"
 
 // Repositories
 repositories {
@@ -29,19 +29,19 @@ repositories {
 // Dependencies
 dependencies {
     // Spigot-based API
-    compileOnly("org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.21.3-R0.1-SNAPSHOT")
 
     // Bundled Libraries
-    implementation("org.apache.commons:commons-lang3:3.15.0")
+    implementation("org.apache.commons:commons-lang3:3.17.0")
     implementation("net.kyori:adventure-api:4.17.0")
     implementation("net.kyori:adventure-platform-bukkit:4.3.4")
     implementation("net.kyori:adventure-text-minimessage:4.17.0")
     implementation("dev.dejvokep:boosted-yaml-spigot:1.4")
-    implementation("dev.jorel:commandapi-bukkit-shade:9.5.2")
+    implementation("dev.jorel:commandapi-bukkit-shade:9.6.0")
     implementation("com.h2database:h2-mvstore:2.3.232")
 
     // APIs
-    compileOnly("com.comphenix.protocol:ProtocolLib:5.1.0");
+    compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0");
 }
 
 // Shadow Task
@@ -58,8 +58,8 @@ publishing {
             name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/xCykrix/SpigotDevkit")
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+            username = project.findProperty("GITHUB_ACTOR").toString() ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("GITHUB_TOKEN").toString() ?: System.getenv("GITHUB_TOKEN")
             }
         }
     }

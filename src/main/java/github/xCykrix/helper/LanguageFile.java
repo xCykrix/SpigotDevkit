@@ -1,9 +1,7 @@
 package github.xCykrix.helper;
 
-
 import dev.dejvokep.boostedyaml.YamlDocument;
 import github.xCykrix.DevkitPlugin;
-import github.xCykrix.extendable.DevkitFullState;
 import github.xCykrix.extendable.DevkitSimpleState;
 import github.xCykrix.records.PlaceholderPair;
 import net.kyori.adventure.text.Component;
@@ -24,8 +22,7 @@ public class LanguageFile extends DevkitSimpleState {
   private final MiniMessage miniMessage = MiniMessage.builder()
       .tags(TagResolver.builder()
           .resolver(StandardTags.defaults())
-          .build()
-      )
+          .build())
       .build();
 
   public LanguageFile(DevkitPlugin plugin, YamlDocument base) {
@@ -36,7 +33,8 @@ public class LanguageFile extends DevkitSimpleState {
 
   public Component getComponentFromID(String id, boolean prefix, PlaceholderPair... pairs) {
     ArrayList<TagResolver.Single> tagResolverSingles = new ArrayList<>();
-    tagResolverSingles.add(prefix ? Placeholder.component("prefix", this.prefix) : Placeholder.component("prefix", Component.text("")));
+    tagResolverSingles.add(
+        prefix ? Placeholder.component("prefix", this.prefix) : Placeholder.component("prefix", Component.text("")));
     for (PlaceholderPair pair : pairs) {
       tagResolverSingles.add(Placeholder.component(pair.id(), pair.component()));
     }
@@ -47,9 +45,10 @@ public class LanguageFile extends DevkitSimpleState {
     return this.getComponentFromID(
         id,
         prefix,
-        new PlaceholderPair("error", Component.text(exception != null ? ExceptionUtils.getMessage(exception) : "Missing Exception Message")),
-        new PlaceholderPair("stack", Component.text(exception != null ? ExceptionUtils.getStackTrace(exception) : "Missing Exception Stacktrace"))
-    );
+        new PlaceholderPair("error",
+            Component.text(exception != null ? ExceptionUtils.getMessage(exception) : "Missing Exception Message")),
+        new PlaceholderPair("stack", Component
+            .text(exception != null ? ExceptionUtils.getStackTrace(exception) : "Missing Exception Stacktrace")));
   }
 
   public Component getBaseComponentFromID(String id) {
@@ -59,7 +58,8 @@ public class LanguageFile extends DevkitSimpleState {
   private String getDataFromID(String id, boolean base) throws RuntimeException {
     id = (!base ? "language." : "") + id;
     String result = this.base.getOptionalString(id).orElse(null);
-    if (result == null) throw new RuntimeException("Key '" + id + "' was not located in the language file.");
+    if (result == null)
+      throw new RuntimeException("Key '" + id + "' was not located in the language file.");
     return result;
   }
 }
