@@ -9,7 +9,7 @@ plugins {
 
 // Variables
 group = "github.xCykrix"
-version = "1.0.5"
+version = "1.0.6"
 
 // Repositories
 repositories {
@@ -41,7 +41,7 @@ dependencies {
     implementation("com.h2database:h2-mvstore:2.3.232")
 
     // APIs
-    compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0");
+    compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0")
 }
 
 // Shadow Task
