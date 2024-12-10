@@ -37,7 +37,7 @@ dependencies {
     implementation("net.kyori:adventure-platform-bukkit:4.3.4")
     implementation("net.kyori:adventure-text-minimessage:4.17.0")
     implementation("dev.dejvokep:boosted-yaml-spigot:1.4")
-    implementation("dev.jorel:commandapi-bukkit-shade:9.6.0")
+    implementation("dev.jorel:commandapi-bukkit-shade:9.7.0")
     implementation("com.h2database:h2-mvstore:2.3.232")
 
     // APIs
