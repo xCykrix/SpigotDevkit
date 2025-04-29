@@ -15,7 +15,9 @@ public abstract class DevkitPlugin extends JavaPlugin implements Initialize, Shu
   // --- PLUGIN LOGIC ---
   @Override
   public void onLoad() {
-    CommandAPI.onLoad(new CommandAPIBukkitConfig(this).usePluginNamespace());
+    CommandAPI.onLoad(
+        new CommandAPIBukkitConfig(this)
+            .beLenientForMinorVersions(true));
     this.pre();
   }
 
@@ -38,7 +40,7 @@ public abstract class DevkitPlugin extends JavaPlugin implements Initialize, Shu
   // --- LOADERS ---
   protected abstract void pre();
 
-  @SuppressWarnings({"unused", "Called by child applications."})
+  @SuppressWarnings({ "unused", "Called by child applications." })
   protected <T extends DevkitFullState> T register(T state) {
     registered.add(state);
     return state;
