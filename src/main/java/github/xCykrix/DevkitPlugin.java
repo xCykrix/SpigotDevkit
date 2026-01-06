@@ -1,7 +1,7 @@
 package github.xCykrix;
 
 import dev.jorel.commandapi.CommandAPI;
-import dev.jorel.commandapi.CommandAPIBukkitConfig;
+import dev.jorel.commandapi.CommandAPISpigotConfig;
 import github.xCykrix.extendable.DevkitFullState;
 import github.xCykrix.implementable.Initialize;
 import github.xCykrix.implementable.Shutdown;
@@ -16,8 +16,8 @@ public abstract class DevkitPlugin extends JavaPlugin implements Initialize, Shu
   @Override
   public void onLoad() {
     CommandAPI.onLoad(
-        new CommandAPIBukkitConfig(this)
-            .beLenientForMinorVersions(true));
+        new CommandAPISpigotConfig(this)
+            .fallbackToLatestNMS(true));
     this.pre();
   }
 
@@ -40,7 +40,6 @@ public abstract class DevkitPlugin extends JavaPlugin implements Initialize, Shu
   // --- LOADERS ---
   protected abstract void pre();
 
-  @SuppressWarnings({ "unused", "Called by child applications." })
   protected <T extends DevkitFullState> T register(T state) {
     registered.add(state);
     return state;

@@ -15,10 +15,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
-import javax.annotation.Nullable;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings({"unused", "Called by child applications."})
+@SuppressWarnings({ "unused", "Called by child applications." })
 public class ConfigurationPlugin extends DevkitFullState {
   private final HashMap<String, YamlDocument> yamlDocumentHashMap = new HashMap<>();
   private LanguageFile languageFile;
@@ -31,13 +31,13 @@ public class ConfigurationPlugin extends DevkitFullState {
   public ConfigurationPlugin register(Resource resource) {
     try {
       yamlDocumentHashMap.put(resource.id(), YamlDocument.create(
-          resource.parentFolder() == null ? new File(this.plugin.getDataFolder(), resource.id()) : new File(this.plugin.getDataFolder() + "/" + resource.parentFolder(), resource.id()),
+          resource.parentFolder() == null ? new File(this.plugin.getDataFolder(), resource.id())
+              : new File(this.plugin.getDataFolder() + "/" + resource.parentFolder(), resource.id()),
           resource.resource(),
           GeneralSettings.builder().setSerializer(SpigotSerializer.getInstance()).setUseDefaults(true).build(),
           LoaderSettings.builder().setAutoUpdate(true).build(),
           DumperSettings.DEFAULT,
-          UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build()
-      ));
+          UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build()));
     } catch (IOException exception) {
       this.plugin.getLogger().severe("Failed to Initialize Configuration File: " + resource.id());
       this.plugin.getLogger().severe(ExceptionUtils.getStackTrace(exception));
