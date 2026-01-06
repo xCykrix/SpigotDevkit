@@ -9,7 +9,7 @@ plugins {
 
 // Variables
 group = "github.xCykrix"
-version = "1.1.0-CAPI1.20" // CAPI 1.20 for Major 10 of Command API, CAPI 1.19 For Major 9 of Command API
+version = "MC1.21.11"
 
 // Repositories
 repositories {
